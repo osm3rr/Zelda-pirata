@@ -3,5 +3,5 @@ witdh=800
 height=600
 
 FPS=60
-
+SCALE=3
 SPEED=3

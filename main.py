@@ -10,12 +10,28 @@ clock= pygame.time.Clock()
 
 running= True
 
-player=Character(40,50)
 
 moving_right=False
 moving_left = False
 moving_up=False
 moving_down=False
+
+#LLegamos hasta aca
+def scale_img(image,scale):
+
+    w= image.get_width()
+    h= image.get_height()
+
+    return pygame.transform.scale(image,(w*scale,h*scale))
+
+
+animation_list=[]
+for i in range(4):
+    img=pygame.image.load(f"Tengo-Fe/images/characters/elf/idle/{i}.png")
+    img=scale_img(img,3)
+    animation_list.append(img)
+
+player=Character(40,50,animation_list)
 
 while running:
     screen.fill((0,255,0))
@@ -60,6 +76,7 @@ while running:
         
 
     player.move(dx,dy)
+    player.update()
 
     pygame.display.update()
     clock.tick(constant.FPS)
